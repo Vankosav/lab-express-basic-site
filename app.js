@@ -1,18 +1,20 @@
 const express = require('express');
 const app = express();
 
+app.use(express.static('public'));
+
 app.get('/', (request, response) => response.render('index.html'));
 
 app.get('/home', (request, response) => {
-    response.send('<h1>Alejandro Jodorowsky</h1>');
+    response.sendFile(__dirname + '/views/home-page.html');
   });
 
 app.get('/about', (request, response) => {
-    response.send("About Jodorowsky"); 
+    response.sendFile(__dirname + '/views/about-page.html');
 });
 
 app.get('/works', (request, response) => {
-    response.send("His work");
+    response.sendFile(__dirname + '/views/work-page.html');    
 });
 
 app.listen(3000, () => {
